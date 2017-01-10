@@ -8,3 +8,5 @@ Change volume and start script:
 ```python
 python3 script.py
 ```
+
+https://hub.docker.com/r/stijnvanhulle/python-opencv/
