@@ -9,9 +9,10 @@ ENV PORT=3000
 ENV MONGO=mongo
 ENV MQTT=mqtt
 ENV MONGO_PORT=27017
+ENV ISDOCKER=true
 
 WORKDIR /var/python
-VOLUME /var/python
+VOLUME ["/var/python","/var/uploads"]
 
 
 RUN apt-get update && \
@@ -33,10 +34,13 @@ RUN apt-get update && \
     libtiff-dev \
     libjasper-dev \
     libavformat-dev \
+    libblas-dev \
+    liblapack-dev \
+    libatlas-base-dev \
+    gfortran \
     && apt-get -y clean all \
     && rm -rf /var/lib/apt/lists/*
-
-RUN pip3 install paho-mqtt trollius
+    
 
 RUN cd / \
     && cv_version='3.2.0' \
